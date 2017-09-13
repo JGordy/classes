@@ -15,8 +15,22 @@
 // It should print "Building one COLOR TRIM MODEL with the following options: OPTIONS", i.e: "Building one red Sport Mazda3 with the following options: heated seats, rear spoiler"
 
 // Create the Factory class bellow:
-
-
+class Factory {
+  constructor(make, location, airbags, abs, warranty) {
+    this.make = "Mazda";
+    this.locaiton = "USA";
+    this.airbags = true;
+    this.abs = true;
+    this.warranty = warranty;
+    this.massBuild = function(quantity, options) {
+      console.log("Building " + quantity + " " + color + " " + trim + " " + model + "'s"  );
+    };
+    this.customerBuild = function(color, options) {
+      console.log("Building one " + color + " " + trim + " " + model + " with the following options: " + options);
+    };
+  }
+}
+// console.log(Factory);
 
 
 // CREATE A SUB-CLASS CALLED CAR
@@ -25,8 +39,24 @@
 // It should specifically inherit the warranty property from Factory so we can modify it.
 // Car should also have the following additional properties: enginesize (4), navigation (true), backupcamera (true), warranty (100,000 miles / 5 years)
 // Write your code below:
+class Car extends Factory {
+  constructor(model, doors, color, enginetype, transmission, trim, wheelstrim, audio, seatstrim, moonroof, warranty) {
+    super(warranty);
+    this.model = model;
+    this.doors = doors;
+    this.color = color;
+    this.enginetype = enginetype;
+    this.transmission = transmission;
+    this.trim = trim;
+    this.wheelstrim = wheelstrim;
+    this.audio = audio;
+    this.seatstrim = seatstrim;
+    this.moonroof = moonroof;
+    this.warranty = "100,000 miles / 5 years"
+  }
+}
 
-
+// console.log(Car);
 
 
 // CREATE A SUB-CLASS CALLED SPORT
@@ -34,8 +64,25 @@
 // The constructor should have the following properties: model, trim, transmission, top, color, seatstrim, audio, wheelstrim. The values should be specified when creating an instance of Sport.
 // Sports cars should also have the following additional properties: moonroof (false), enginetype (gasoline), convertible (true), doors (2)
 // Write your code below:
+class Sport extends Factory {
+  constructor(model, trim, transmission, top, color, seatstrim, audio, wheelstrim) {
+    super(warranty);
+    this.model = model;
+    this.trim = trim;
+    this.transmission = transmission;
+    this.top = top;
+    this.color = color;
+    this.seatstrim = seatstrim;
+    this.audio = audio;
+    this.wheelstrim = wheelstrim;
+    this.moonroof = false;
+    this.enginetype = "gasoline";
+    this.convertible = true;
+    this.doors = 2;
+  }
+}
 
-
+// console.log(Sport);
 
 
 // CREATE A SUB-CLASS CALLED TRUCK
@@ -45,8 +92,23 @@
 // Truck should also have the following properties, standard: backupcamera (true), audio (basic)
 // It should also inherit the warranty property so we can extend it to: 150,000 miles / 6 years.
 // Write your code below:
+class Truck extends Factory {
+  constructor(model, color, enginesize, hitch, bed, navigation) {
+    super(warranty);
+    this.model = model;
+    this.color = color;
+    this.enginesize = enginesize;
+    this.hitch = hitch;
+    this.bed = bed;
+    this.navigation = navigation;
+    this.backupcamera = true;
+    this.audio = "basic";
+    this.warranty = "150,000 miles / 6 years";
+  }
+}
 
 
+// console.log(Truck);
 
 
 // LET'S BUILD SOME CARS AND TRUCKS!
@@ -56,11 +118,11 @@
 // The following properties must be specified: model (mazda3), color (red), enginetype (hybrid), transmission (automatic), trim (touring), wheels (base), audio (premium), seats (leather), and moonroof (true)
 
 // Write your 'mazda3' instance below:
-
+let mazda3 = new Car("Mazda3", 4, "red", "hybrid", "automatic", "touring", "base", "premium", "leather", true)
 
 // Print mazda3. I should have all the above properties.
 // Write your code below:
-
+console.log(mazda3);
 
 
 
